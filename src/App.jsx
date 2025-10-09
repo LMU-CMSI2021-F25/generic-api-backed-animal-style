@@ -1,34 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
+function booboo() {
+
+  window.location.reload();
+  
+}
+
 function App() {
-  const [count, setCount] = useState(1)
+  const [all_crimes, setCrimes] = useState([
+    "Resisting Arrest",
+    "Violation of Court Order",
+    "Homicide",
+    "Kidnapping",
+    "Robbery",
+    "Carjacking",
+    "Assault",
+    "Battery",
+    "Assault w/ Deadly Weapon",
+    "Child Abuse",
+    "Disturbing the Peace",
+    "Brandishing a Weapon",
+    "Grand Theft",
+    "Vandalism",
+    "Trespassing",
+    "Minor possessing alcohol",
+    "Public Intoxication",
+    "Hit and Run, Injury",
+    "Speeding",
+    "DUI",
+    "Possession of Marijuana",
+    "Possession of Paraphernalia",
+    "Mental Case",
+    "Arson",
+    "Violating Geneva convention",
+    "Cannibalism"
+  ]);
+  var [dogs, setDogs] = useState([]);
+  useEffect(() => {
+    const url = "https://dog.ceo/api/breeds/image/random/5";
+    fetch(url)
+      .then((r) => r.json())
+      .then((response) => {
+        setDogs(response.message);
+      });
+  }, []);
+  var [correct_crimes, setCorrectCrimes] = useState([
+    all_crimes[Math.floor(Math.random() * all_crimes.length)],
+    all_crimes[Math.floor(Math.random() * all_crimes.length)],
+    all_crimes[Math.floor(Math.random() * all_crimes.length)],
+    all_crimes[Math.floor(Math.random() * all_crimes.length)],
+    all_crimes[Math.floor(Math.random() * all_crimes.length)]
+  ]);
+  var player_crimes = ([...correct_crimes]);
+  var clicked_crime = false;
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <h1>Dogs and their Crimes!</h1>
+      <div class='flex-container'>
+        <div class='grid-container'>
+          {dogs &&
+          dogs.map((dog) => (
+            <div key={dog}>
+              <img src={dog} />
+            </div>
+          ))}
+
+        </div>
+        <div class='grid-container'>
+          {player_crimes &&
+          player_crimes.map((crime) => (
+            <button class='crime' key={crime}>
+              {crime}
+            </button>
+          ))}
+        </div>
+        <button onClick={() => booboo()}> GIVE ME NEW DOGS!</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count * 2)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 

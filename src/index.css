@@ -1,3 +1,8 @@
+@font-face {
+  font-family: tale;
+  src: url("assets/PixelOperator.ttf")
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(to right, #880088, #ffff00);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -41,7 +46,7 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: tale;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -52,6 +57,33 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.grid-container {
+  display: grid;
+  border-color: #ffffff;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.crime {
+  background-color:blue;
+}
+.crime:hover {
+  background-color: purple;
+  border-color: #ffffff
+}
+
+.flex-container {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+img {
+  max-width: 100%;
 }
 
 @media (prefers-color-scheme: light) {
