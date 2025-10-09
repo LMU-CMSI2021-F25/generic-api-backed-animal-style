@@ -77,7 +77,7 @@ function App() {
             </button>
           ))}
         </div>
-        <button onClick={() => booboo()}> GIVE ME NEW DOGS!</button>
+        <button onClick={() => booboo()}>GIVE ME NEW DOGS!</button>
       </div>
     </div>
   )
